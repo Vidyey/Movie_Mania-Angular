@@ -3,13 +3,29 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SearchMovieComponent } from './components/search-movie/search-movie.component';
+
+import { MovielistComponent } from './components/Admin/movielist/movielist.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { TheaterComponent } from './components/Admin/theater/theater.component';
+import { ScreenComponent } from './components/Admin/screen/screen.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchMovieComponent,
+  
+    MovielistComponent,
+  
+    TheaterComponent,
+  
+    ScreenComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

@@ -1,0 +1,292 @@
+<br/>
+<br/>
+
+
+
+
+
+
+
+<!---->
+<!-- <div class="row">
+    <div class="col-lg-6">
+        <h2>Movie Details..</h2>
+        <br />
+        <button class="btn btn-outline-success" routerLink="/addmovie">Add Movie</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-outline-danger">Add theater</button>
+        &nbsp;&nbsp;
+        <br />
+        <br />
+
+
+    </div>
+
+</div> -->
+
+
+<!--List Users-->
+<div class="row">
+    <div class="col-lg-8 col-md-8">
+        <h2>Movie Details..</h2>
+        <br />
+        <!-- <button class="btn btn-outline-success" routerLink="/addmovie">Add Movie</button> -->
+        &nbsp;&nbsp;
+        <button class="btn btn-outline-danger" routerLink="/theater">Add theater</button>
+        &nbsp;&nbsp;
+        <br />
+        <br />
+        <ng-container>
+
+
+            <table class="table table-striped table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-hide">Id</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Genre</th>
+                        <th>Director</th>
+                        <th>Length</th>
+                        <th>Languages</th>
+                        <th>ReleaseDate</th>
+                    </tr>
+
+                </thead>
+                <!--*ngFor->structural dirextive-->
+                <tbody>
+
+                    <!-- <tr *ngFor="let user of users">
+                        <td class="text-hide">{{user.id}}</td>
+                        <td>{{user.firstname}}</td>
+                        <td>{{user.lastname}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.age}}</td>
+                        <td>{{user.mobileNumber}}</td>
+                        <td>
+                            <button class="btn-outline-danger" (click)="editUser(user)">Edit</button>&nbsp;&nbsp;
+                            <button class="btn-outline-warning" (click)="deleteUser(user)">Delete</button>
+                        </td>
+                    </tr> -->
+
+
+                    <tr>
+                        <td class="text-hide"></td>
+                        <td>ghbk</td>
+                        <td>jnkj</td>
+                        <td>useremail</td>
+                        <td>userage</td>
+                        <td>usermobileNumber</td>
+                        <td>usermobileNumber</td>
+                        <td>usermobileNumber</td>
+                        <td>
+                            <button class="btn-outline-danger">Select</button>&nbsp;&nbsp;
+                            <button class="btn-outline-warning">Delete</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-hide"></td>
+                        <td>ghbk</td>
+                        <td>jnkj</td>
+                        <td>useremail</td>
+                        <td>userage</td>
+                        <td>usermobileNumber</td>
+                        <td>usermobileNumber</td>
+                        <td>usermobileNumber</td>
+                        <td>
+                            <button class="btn-outline-danger">Select</button>&nbsp;&nbsp;
+                            <button class="btn-outline-warning">Delete</button>
+                        </td>
+                    </tr>
+
+
+
+
+                </tbody>
+            </table>
+        </ng-container>
+    </div>
+    <div>
+
+
+        
+        <div class="col-lg-4 col-md-4">
+            <!-- <h2 style="margin-left: 200px;">AddMovie</h2> -->
+            <h2 style="margin-left: 100px;">AddMovie</h2>
+            <div>
+                <!-- <h3 class="text-primary">Please Register yourself to create account..</h3> -->
+                <!-- <h2>Movie Details..</h2> -->
+               
+                <br />
+                <!---->
+                <div class="card" style="width: 300px;">
+                    <!-- <h4 class="card-header text-primary font-weight-bold text-center" >Register</h4> -->
+                    <div class="card-body">
+                        <br />
+                        <form [formGroup]="addmovieForm" (ngSubmit)="onsubmit()">
+
+                            <div class="form-group">
+                                <label class="label">MovieId</label>
+                                <input type="text" placeholder="Enter MovieId Here.." formControlName="movieId"
+                                    class="form-control" />
+
+                                <div *ngIf="addmovieForm.get('movieId').errors  && submitted">
+                                    <div *ngIf="addmovieForm.get('movieId').hasError('required')">
+                                        <span style="color: red;">Please Enter MovieId.</span>
+                                    </div>
+
+                                    <div *ngIf="addmovieForm.get('movieId').hasError('pattern')">
+                                        <span style="color: red;">MovieId should not contain letters.</span>
+                                    </div>
+                                    <div *ngIf="addmovieForm.get('movieId').hasError('max')">
+                                        <span style="color: red;">Maximum Length should be 5.</span>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <!-- <div class="form-group">
+                            <label for="name">Enter name</label>
+                            <input type="name" class="form-control" formControlName="name" placeholder="Name" />
+    
+    
+                            <div *ngIf="submitted && registerForm.controls.name.errors" class="error">
+                                <div class="text-danger" *ngIf="registerForm.controls.name.errors.required">
+                                    Name is required..
+                                </div>
+                            </div>
+    
+                        </div> -->
+                            <!---->
+                            <!---->
+
+                            <div class="form-group">
+                                <label class="label">Movie Name</label>
+                                <input type="text" placeholder="Enter Movie Name  Here.." formControlName="movieName"
+                                    class="form-control" />
+                                <div *ngIf="addmovieForm.get('movieName').errors && submitted">
+                                    <div *ngIf="addmovieForm.get('movieName').hasError('required')">
+                                        <span style="color: red;">Please Enter Moviename.</span>
+                                    </div>
+                                    <div *ngIf="addmovieForm.get('movieName').hasError('pattern')">
+                                        <span style="color: red;">Only letters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---->
+
+                            <div class="form-group">
+                                <label class="label">MovieGenre </label>
+                                <input type="text" placeholder="Enter MovieGenre Here.." formControlName="movieGenre"
+                                    class="form-control" />
+                                <div *ngIf="addmovieForm.get('movieGenre').errors && submitted">
+                                    <div *ngIf="addmovieForm.get('movieGenre').hasError('required')">
+                                        <span style="color: red;">Please Enter Moviegenre.</span>
+                                    </div>
+                                    <div *ngIf="addmovieForm.get('movieGenre').hasError('pattern')">
+                                        <span style="color: red;">Only letters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--  -->
+                            <div class="form-group">
+                                <label class="label">MovieDirector </label>
+                                <input type="text" placeholder="Enter Moviedirector Here.."
+                                    formControlName="movieDirector" class="form-control" />
+                                <div *ngIf="addmovieForm.get('movieDirector').errors && submitted">
+                                    <div *ngIf="addmovieForm.get('movieDirector').hasError('required')">
+                                        <span style="color: red;">Please Enter Moviedirector.</span>
+                                    </div>
+                                    <div *ngIf="addmovieForm.get('movieDirector').hasError('pattern')">
+                                        <span style="color: red;">Only letters are allowed.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!---->
+
+
+
+                            <!---->
+                            <div class="form-group">
+                                <label class="label">MovieLength</label>
+                                <input type="text" placeholder="Enter MovieLength Here.." formControlName="movieLength"
+                                    class="form-control" />
+
+                                <div *ngIf="addmovieForm.get('movieLength').errors  && submitted">
+                                    <div *ngIf="addmovieForm.get('movieLength').hasError('required')">
+                                        <span style="color: red;">Please Enter Movielength.</span>
+                                    </div>
+                                    <div *ngIf="addmovieForm.get('movieLength').hasError('min')">
+                                        <span style="color: red;">Minimum Movielength should be 18.</span>
+                                    </div>
+                                    <div *ngIf="addmovieForm.get('movieLength').hasError('max')">
+                                        <span style="color: red;">Maximum Movielength should be 100.</span>
+                                    </div>
+                                    <div *ngIf="addmovieForm.get('movieLength').hasError('pattern')">
+                                        <span style="color: red;">Movielength should not contain letters.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!---->
+
+
+
+                            <div class="form-group">
+                                <label class="label">Enter Language</label>
+                                <input type="text" placeholder="Enter Language Here.." formControlName="languages"
+                                    class="form-control" />
+
+                                <div *ngIf="addmovieForm.get('languages').errors  && submitted">
+                                    <div *ngIf="addmovieForm.get('languages').hasError('required')">
+                                        <span style="color: red;">Please Enter Language.</span>
+                                    </div>
+                                    <div *ngIf="addmovieForm.get('languages').hasError('pattern')">
+                                        <span style="color: red;">Only letters are allowed.</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <label class="label">Enter MovieReleaseDate</label>
+                                <input type="text" placeholder="Enter Language Here.." formControlName="movieReleaseDate"
+                                    class="form-control" />
+
+                                <div *ngIf="addmovieForm.get('movieReleaseDate').errors  && submitted">
+                                    <div *ngIf="addmovieForm.get('movieReleaseDate').hasError('required')">
+                                        <span style="color: red;">Please Enter MovieReleaseDate.</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                           <!--  -->
+
+
+                            <button type="submit" class="button" style="background:#1161ee;">Save</button> &nbsp;
+                            <!-- <button class="button" style="background:#1161ee;" routerLink="/movielist">Back to -->
+                                <!-- list</button>&nbsp; -->
+                            <!-- <a class="button" routerLink="/home" style="background:#1161ee;">Cancel</a>&nbsp; -->
+                            <button type="reset" class="button" id="reset-btn" ng-click="reset()"
+                                style="background:#1161ee;">Reset</button>
+                            <!-- <button type="submit" class="btn btn-primary" ng-click="refresh()">Reset</button> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>
