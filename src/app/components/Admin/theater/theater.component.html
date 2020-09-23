@@ -27,8 +27,8 @@
         <h2 style="margin-left: 200px;">Theater Details..</h2>
         <br />
         <!-- <button class="btn btn-outline-success" routerLink="/addmovie">Add Movie</button>
-        &nbsp;&nbsp;
-        <button class="btn btn-outline-danger">Add theater</button> -->
+        &nbsp;&nbsp;-->
+        <button class="btn btn-outline-danger" routerLink="/movielist">Previous</button> 
         &nbsp;&nbsp;
         <br />
         <br />
@@ -38,7 +38,6 @@
             <table class="table table-striped table-responsive table-hover">
                 <thead>
                     <tr>
-                        <th class="text-hide">Id</th>
                         <th>Theater Id</th>
                         <th>Theater Name</th>
                         <th>Theater City</th>
@@ -65,19 +64,19 @@
                     </tr> -->
 
 
-                    <tr *ngFor="let user of theaterlist">
-                        <td class="text-hide"></td>
+                     <tr *ngFor="let user of theater | reverse">
+                         <!-- <tr *ngFor="user of theater?.reverse()"> -->
                         <td>{{user.theaterId}}</td>
                         <td>{{user.theaterName}}</td>
                         <td>{{user.theaterCity}}</td>
                         <td>{{user.managerName}}</td>
                         <td>{{user.managerContact}}</td>
                         <td>
-                            <button class="btn-outline-danger">Select</button>&nbsp;&nbsp;
-                            <button class="btn-outline-warning" style="margin-top: 10px;">Delete</button>
+                            <button class="btn-outline-danger" routerLink="/screen">Select</button>&nbsp;&nbsp;
+                            <button class="btn-outline-warning" style="margin-top: 10px;" (click)="deleteMovie(user)">Delete</button>
                         </td>
-                    </tr>
-                   
+                    </tr> 
+                    
 
 
 
@@ -152,7 +151,7 @@
                                         <span style="color: red;">Please Enter Theater.</span>
                                     </div>
                                     <div *ngIf="addtheaterForm.get('theaterName').hasError('pattern')">
-                                        <span style="color: red;">Only letters are allowed.</span>
+                                        <span style="color: red;">Spaces are not allowed.</span>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +181,7 @@
                                         <span style="color: red;">Please Enter Managername.</span>
                                     </div>
                                     <div *ngIf="addtheaterForm.get('managerName').hasError('pattern')">
-                                        <span style="color: red;">Only letters are allowed.</span>
+                                        <span style="color: red;">Spaces are not allowed.</span>
                                     </div>
                                 </div>
                             </div>

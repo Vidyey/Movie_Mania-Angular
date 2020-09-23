@@ -40,3 +40,8 @@
     display: flex;
     justify-content: space-between;
   }
+  .reversetable td
+  {
+    display: flex;
+flex-direction: row-reverse;
+  }

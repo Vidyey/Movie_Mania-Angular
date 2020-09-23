@@ -1,12 +1,10 @@
-export class Admin{
+export class adminContact{
 
-    username:string; 
-    password:string;
-    securityQuestion:string;
-    answer:string;
-    adminName:string;
-    adminContact:string;
-    
 
-    
+userId:number; 
+password:string;
+securityQuestion:string;
+ answer:string;
+ adminName:string;
+ adminContact:string;
 }

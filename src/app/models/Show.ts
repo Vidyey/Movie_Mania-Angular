@@ -4,7 +4,7 @@ export class Show
     showStartTime:string;
     showEndTime:string;
     showName:string;
-    movieName:string;
+    // movieName:string;
      screenId:number;
      theaterId:number;
 }
