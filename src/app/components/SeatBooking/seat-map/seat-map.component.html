@@ -1,0 +1,19 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <td *ngFor="let col of colArray; let colindex = index">{{colindex}}</td>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of rowArray; let rowindex = index">
+            <td *ngFor="let col of colArray; let colindex = index">
+                <input type="checkbox" id="{{rowindex}}{{colindex}}" name="{{rowindex}}{{colindex}}" value="{{rowindex}}{{colindex}}"><br>{{rowindex}},{{colindex}}</td>
+            <!---https://www.concretepage.com/angular-2/angular-2-attribute-binding-example --> 
+        </tr>
+        <tr>
+            <td colspan="10" style="text-align:center;">----------------------------screen---------------------------------</td>
+        </tr>
+    </tbody>
+      </table>
+
+      

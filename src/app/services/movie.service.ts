@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Movie } from '../models/Movie';
 import { Theater } from '../models/Theater';
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-
+  
+  private baseURL = 'http://localhost:5000/CapStore/Billing';
+  private headers = new HttpHeaders ({'Content-Type': 'application/json'});
+  private options = {headers: this.headers};
   constructor(private http:HttpClient) { }
 
  
