@@ -4,6 +4,12 @@ import { MovielistComponent } from './components/Admin/movielist/movielist.compo
 import { ScreenComponent } from './components/Admin/screen/screen.component';
 import { ShowComponent } from './components/Admin/show/show.component';
 import { TheaterComponent } from './components/Admin/theater/theater.component';
+import { BookingHistoryComponent } from './components/Customer/booking-history/booking-history.component';
+import { ChangePasswordComponent } from './components/Customer/change-password/change-password.component';
+import { EditUserComponent } from './components/Customer/edit-user/edit-user.component';
+import { ForgotPasswordComponent } from './components/Customer/forgot-password/forgot-password.component';
+import { LoginComponent } from './components/Customer/login/login.component';
+import { RegisterComponent } from './components/Customer/register/register.component';
 
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 
@@ -13,7 +19,14 @@ const routes: Routes = [
   {path:'movielist',component:MovielistComponent},
   {path:'theater',component:TheaterComponent},
   {path:'screen',component:ScreenComponent},
-  {path:'show',component:ShowComponent}
+  {path:'show',component:ShowComponent},
+  {path:'login',component:LoginComponent},
+  {path:'register',component:RegisterComponent},
+  {path:'editUser',component:EditUserComponent},
+  {path:'changePass',component:ChangePasswordComponent},
+  {path:'forgotPass',component:ForgotPasswordComponent},
+  {path:'bookings',component:BookingHistoryComponent},
+  {path:'**',redirectTo:'/search',pathMatch:'full'}
 ];
 
 @NgModule({
