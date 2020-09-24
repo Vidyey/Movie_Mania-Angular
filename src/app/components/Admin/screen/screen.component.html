@@ -27,8 +27,8 @@
         <h2 style="margin-left: 200px;">Screen Details..</h2>
         <br />
         <!-- <button class="btn btn-outline-success" routerLink="/addmovie">Add Movie</button>
-        &nbsp;&nbsp;
-        <button class="btn btn-outline-danger">Add theater</button> -->
+        &nbsp;&nbsp;-->
+        <button class="btn btn-outline-danger" routerLink="/theater">Previous</button>
         &nbsp;&nbsp;
         <br />
         <br />
@@ -38,11 +38,11 @@
             <table class="table table-striped table-responsive table-hover">
                 <thead>
                     <tr>
-                        <th class="text-hide">Id</th>
-                        <th>Screen Id</th>
-                        <th>Theater Id</th>
-                        <th>Screen Name</th>
-                        <th>MovieEndDate</th>
+                        <!-- <th class="text-hide">Id</th> -->
+                        <th>Show Id</th>
+                        <!-- <th>Theater Id</th> -->
+                        <th>Show Name</th>
+                        <th>showStartTime</th>
                         <th>Rows</th>
                         <th>Columns</th>
                         
@@ -66,30 +66,20 @@
                     </tr> -->
 
 
-                    <tr>
-                        <td class="text-hide"></td>
-                        <td>ghbk</td>
-                        <td>jnkj</td>
-                        <td>useremail</td>
-                        <td>userage</td>
-                        <td>usermobileNumber</td>
+                    <tr *ngFor="let user of screen | reverse">
+                        <!-- <td class="text-hide"></td> -->
+                        <td>{{user.screenId}}</td>
+                        <!-- <td class="text-hide">{{user.theaterId}}</td> -->
+                        <td>{{user.screenName}}</td>
+                        <td>{{user.movieEndDate}}</td>
+                        <td>{{user.rows}}</td>
+                        <td>{{user.columns}}</td>
                         <td>
-                            <button class="btn-outline-danger">Select</button>&nbsp;&nbsp;
-                            <button class="btn-outline-warning" style="margin-top: 10px;">Delete</button>
+                            <button class="btn-outline-danger" routerLink="/show">Select</button>&nbsp;&nbsp;
+                            <button class="btn-outline-warning" style="margin-top: 10px;" (click)="deleteScreen(user)">Delete</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="text-hide"></td>
-                        <td>ghbk</td>
-                        <td>jnkj</td>
-                        <td>useremail</td>
-                        <td>userage</td>
-                        <td>user</td>
-                        <td>
-                            <button class="btn-outline-danger">Select</button>&nbsp;&nbsp;
-                            <button class="btn-outline-warning" style="margin-top: 10px;">Delete</button>
-                        </td>
-                    </tr>
+                   
 
 
 
@@ -173,7 +163,7 @@
                                         <span style="color: red;">Please Enter Screen.</span>
                                     </div>
                                     <div *ngIf="addscreenForm.get('screenName').hasError('pattern')">
-                                        <span style="color: red;">Only letters are allowed.</span>
+                                        <span style="color: red;">Only spaces are not are allowed.</span>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +171,7 @@
 
                             <div class="form-group">
                                 <label class="label">Enter MovieEndDate</label>
-                                <input type="text" placeholder="Enter MovieEndDate Here.." formControlName="movieEndDate"
+                                <input type="date" placeholder="Enter MovieEndDate Here.." formControlName="movieEndDate"
                                     class="form-control" />
 
                                 <div *ngIf="addscreenForm.get('movieEndDate').errors  && submitted">

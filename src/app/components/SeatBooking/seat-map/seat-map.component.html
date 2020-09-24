@@ -7,7 +7,7 @@
     <tbody>
         <tr *ngFor="let row of rowArray; let rowindex = index">
             <td *ngFor="let col of colArray; let colindex = index">
-                <input type="checkbox" id="{{rowindex}}{{colindex}}" name="{{rowindex}}{{colindex}}" value="{{rowindex}}{{colindex}}"><br>{{rowindex}},{{colindex}}</td>
+                <input type="checkbox" id="{{rowindex}}{{colindex}}" name="{{rowindex}}{{colindex}}" value="{{rowindex}}{{colindex}}" (click)="Selectseat(rowindex,colindex)"><br>{{rowindex}},{{colindex}}</td>
             <!---https://www.concretepage.com/angular-2/angular-2-attribute-binding-example --> 
         </tr>
         <tr>
@@ -15,5 +15,6 @@
         </tr>
     </tbody>
       </table>
+      <span class="time-right"><button class="btn-outline-danger" routerLink="/selectPaymentOption" >Select Payment Method </button></span>
 
       

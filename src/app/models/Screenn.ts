@@ -1,4 +1,5 @@
-export class Screen{
+export class Screenn
+{
     screenId:number;
     theaterId:number; 
     screenName:string;  

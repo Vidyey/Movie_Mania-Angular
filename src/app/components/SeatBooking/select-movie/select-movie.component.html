@@ -1,12 +1,16 @@
 <div class="col-lg-8 col-md-8">
     <h2>Step 2 :- Select Movie</h2>
                <table>
-                   <tr>
+                <tr *ngFor="let movie of movies | reverse , let i = index">
                        <td>
                         <div class="container">
-                            <img src="assets/images/Movie2.jpg" alt="Delhi" style="width:100%">
-                            <p>Hello. How are you today?</p>
-                            <span class="time-right"><button class="btn-outline-danger">Select</button></span>
+                            <img src="assets/images/Movie2.jpg" alt="Movie Name" style="width:100%">
+                            <h3>{{movie.movieName}}</h3>
+                            <h4><b>Languages :-</b>{{movie.languages}}</h4>
+                            <h4><b>Genere :-</b>{{movie.movieGenre}}</h4>
+                            <h4><b>Director :-</b>{{movie.movieDirector}}</h4>
+                            <span class="time-right"><h4>Duration :- <i>{{movie.movieLength}}</i></h4>
+                                <button class="btn-outline-primary" (click)="selectMovie(i)" routerLink="/selectTheatre">Select</button></span>
                         </div>
                        </td>
                    </tr>
@@ -14,8 +18,11 @@
                     <td>
                      <div class="container">
                          <img src="assets/images/Movie2.jpg" alt="Delhi" style="width:100%">
-                         <p>Hello. How are you today?</p>
-                         <span class="time-right"><button class="btn-outline-danger">Select</button></span>
+                         <h3>Singham</h3>
+                            <h4><b>Languages :-</b>Hindi</h4>
+                            <h4><b>Genere :-</b>Action</h4>
+                            <h4><b>Director :-</b>Sunil  Shetty</h4>
+                         <span class="time-right"><button class="btn-outline-danger" routerLink="/selectTheatre" >Select</button></span>
                      </div>
                     </td>
                 </tr>

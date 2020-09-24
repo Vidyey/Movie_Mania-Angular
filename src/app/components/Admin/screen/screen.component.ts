@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Screenn } from 'src/app/models/Screenn';
 import { MovieService } from 'src/app/Services/movie.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { MovieService } from 'src/app/Services/movie.service';
 export class ScreenComponent implements OnInit {
   addscreenForm: FormGroup;
   submitted: boolean = false;
+  screen:Screenn[];
 
   constructor(private builder2:FormBuilder,private router:Router,private ser:MovieService) { }
 
@@ -33,7 +35,10 @@ export class ScreenComponent implements OnInit {
 
       screenName: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-zA-Z]+")
+        // Validators.pattern("[a-zA-Z\s]")
+        // Validators.pattern("[a-zA-Z][a-zA-Z0-9\s]*")
+        
+        Validators.pattern( "[a-zA-Z0-9]+[a-zA-Z0-9 ]+")
       ]),
 
       movieEndDate: new FormControl('', [
@@ -55,6 +60,10 @@ export class ScreenComponent implements OnInit {
       ]),
     
     })
+    this.ser.getAllScreens().subscribe(data=>{
+      this.screen=data;
+      console.log(this.screen);
+    })
   }
 
   onsubmit() {
@@ -66,11 +75,32 @@ export class ScreenComponent implements OnInit {
     }
     this.ser.addScreen(this.addscreenForm.value,this.addscreenForm.value.theaterId).subscribe(data=>{
       console.log(data);
+      alert("Screen added Sucessfully");
+      location.reload();
+      
     })
     
 
 
-
+   
     
   }
+
+  deleteScreen(objjj:Screenn)
+{
+  let result = confirm("Do you want to delete screen");
+  if(result){
+this.ser.deleteScreen(objjj.screenId).subscribe(data=>{
+  this.screen=this.screen.filter(u=>u!== objjj);
+},
+err => {
+  console.log(err.stack);
 }
+);
+
+}
+alert("Screen is Deleted..!");
+ location.reload();
+}
+}
+

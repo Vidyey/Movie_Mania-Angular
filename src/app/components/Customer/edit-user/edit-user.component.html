@@ -1,0 +1,145 @@
+<br/>
+<br/>
+<div class="col-md-10 col-lg-10">
+    <h3 class="class=mt3" style="margin-left: 20%; text-align: center;">Edit Profile</h3>
+    <hr>
+    <br/>
+<br/>
+
+    <form [formGroup]="editProfileForm" (ngSubmit)="editUser()">
+        <div class="form-group row">
+            <label for="username" class="required col-lg-4 text-right font-weight-bold">
+                User Name :
+            </label>
+            <div class="col-lg-8">
+                <input type="text" class="form-control " placeholder="Name" formControlName="username" />
+
+                <div *ngIf="submitted && editProfileForm.controls.username.errors">
+                    <div class="text-danger" *ngIf="editProfileForm.controls.username.errors.required">
+                        UserName is required..!
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div *ngIf="isCustomer">
+        
+        <div class="form-group row">
+            <label for="customerName" class="required col-lg-4 text-right font-weight-bold">
+                Name :
+            </label>
+            <div class="col-lg-8">
+                <input type="text" class="form-control " placeholder="customerName" formControlName="customerName" />
+
+                <div *ngIf="submitted && editProfileForm.controls.customerName.errors">
+                    <div class="text-danger" *ngIf="editProfileForm.controls.customerName.errors.required">
+                        Name is required..!
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="form-group row">
+            <label for="customerContact" class="required col-lg-4 text-right font-weight-bold">
+                PhoneNo :
+            </label>
+            <div class="col-lg-8">
+                <input type="text" class="form-control " placeholder="customerContact" formControlName="customerContact" />
+
+                <div *ngIf="submitted && editProfileForm.controls.customerContact.errors">
+                    <div class="text-danger" *ngIf="editProfileForm.controls.customerContact.errors.required">
+                        customerContact is required..!
+                    </div>
+                     <div class="text-danger" *ngIf="editProfileForm.controls.customerContact.errors.pattern">
+                        Mobile Number must be 10 digits and should be numeric..!
+                    </div> 
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="form-group row">
+            <label for="dateOfBirth" class="required col-lg-4 text-right font-weight-bold">
+                Date Of Birth :
+            </label>
+            <div class="col-lg-8">
+                <input type="date" class="form-control " placeholder="dateOfBirth" formControlName="dateOfBirth" />
+
+                <div *ngIf="submitted && editProfileForm.controls.dateOfBirth.errors">
+                    <div class="text-danger" *ngIf="editProfileForm.controls.dateOfBirth.errors.required">
+                        Date Of Birth is required..!
+                    </div>
+    
+
+                </div>
+            </div>
+
+
+        </div>
+        </div>
+        <div *ngIf="isAdmin">
+
+            <div class="form-group row">
+            <label for="adminName" class="required col-lg-4 text-right font-weight-bold">
+                Name :
+            </label>
+            <div class="col-lg-8">
+                <input type="text" class="form-control " placeholder="adminName" formControlName="adminName" />
+
+                <div *ngIf="submitted && editProfileForm.controls.adminName.errors">
+                    <div class="text-danger" *ngIf="editProfileForm.controls.adminName.errors.required">
+                        Name is required..!
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="form-group row">
+            <label for="adminContact" class="required col-lg-4 text-right font-weight-bold">
+                PhoneNo :
+            </label>
+            <div class="col-lg-8">
+                <input type="text" class="form-control " placeholder="adminContact" formControlName="adminContact" />
+
+                <div *ngIf="submitted && editProfileForm.controls.adminContact.errors">
+                    <div class="text-danger" *ngIf="editProfileForm.controls.adminContact.errors.required">
+                        adminContact is required..!
+                    </div>
+                     <div class="text-danger" *ngIf="editProfileForm.controls.adminContact.errors.pattern">
+                        Mobile Number must be 10 digits and should be numeric..!
+                    </div> 
+
+                </div>
+            </div>
+
+
+        </div>
+
+        </div>
+
+
+        
+        
+       
+        <div class="col-lg-8" style="margin-top: 30px; margin-left: 240px;">
+            <button class="saveButton"  type="submit">Save</button>&nbsp; &nbsp;
+            <a routerLink="/changePass" class="btn btn btn-outline-add ">Change Password</a>
+        </div>
+        
+       
+    </form>
+    
+    
+
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MovieService } from 'src/app/Services/movie.service';
+import { Movie } from 'src/app/models/Movie';
 
 @Component({
   selector: 'app-select-movie',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectMovieComponent implements OnInit {
 
-  constructor() { }
+  movies: Movie[];
+
+  selectedMovie : Movie;
+
+  constructor(private router: Router, private movieser: MovieService) { }
+
 
   ngOnInit(): void {
+
+    this.movieser.getallMovies().subscribe(data => {
+      this.movies = data;
+      console.log(this.movies);
+      console.log("hii");
+    })
+
+  }
+
+  selectMovie(i:number){
+
+    this.selectedMovie = this.movies[i];
+    sessionStorage.movieid=this.selectedMovie.movieId;
+    console.log(this.selectedMovie.movieId);
+
   }
 
 }

@@ -5,8 +5,9 @@ export class Movie
     movieGenre:string;
     movieDirector:string;
     movieLength:number;
-    // languages:string;
-    languages:Array<string>;
+     languages:string;
+    //languages=new Array<string>();
+    // languages:string[];
     movieReleaseDate:string;
 
 }
