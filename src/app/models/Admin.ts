@@ -1,3 +1,13 @@
+export class adminContact{
+
+
+userId:number; 
+password:string;
+securityQuestion:string;
+ answer:string;
+ adminName:string;
+ adminContact:string;
+}
 export class Admin{
 
     username:string; 
@@ -6,7 +16,5 @@ export class Admin{
     answer:string;
     adminName:string;
     adminContact:string;
-    
-
-    
+ 
 }

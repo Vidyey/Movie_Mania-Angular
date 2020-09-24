@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       role:['',Validators.required],
     })
     if(localStorage.role == "admin")
-    this.router.navigate(['']);
+    this.router.navigate(['/theater']);
     else if(localStorage.role == "customer")
     this.router.navigate(['/search']);
     
@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
       if (data) {
         localStorage.username = username;
         localStorage.role = "admin";
+        location.reload();
       }
       else {
         this.invalidLogin = true;

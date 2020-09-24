@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MovieService } from 'src/app/Services/movie.service';
 import { Location } from '@angular/common';
+import { PasswordValidator } from '../../shared/password.validator';
 
 @Component({
   selector: 'app-change-password',
@@ -25,7 +26,7 @@ export class ChangePasswordComponent implements OnInit {
       oldPassword:['',Validators.required],
       newPassword: ['', [Validators.required,Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}")]],
       confirmPassword: ['', Validators.required]
-    });
+    },{validators:PasswordValidator});
     if (localStorage.username == null) {
       this.router.navigate(['/search']);
     }
@@ -47,16 +48,16 @@ export class ChangePasswordComponent implements OnInit {
     let role = localStorage.role;
     if(role=="customer"){
     this.service.changePassword(localStorage.username, oldPassword, newPassword).subscribe(data => {
-      // if (data == "ok") {
-      //   alert("Password is changed Successfully...");
-      //   this.router.navigate(['/editUser']);
-      // } else {
-      //   alert(data);
-      //   this.router.navigateByUrl('/Refresh', { skipLocationChange: true }).then(() => {
-      //     this.router.navigate(['/changePass']);
-      //   });
-      // }
-      alert(data);
+      if (data == "ok") {
+        alert("Password is changed Successfully...");
+        this.router.navigate(['/editUser']);
+      } else {
+        alert(data);
+        this.router.navigateByUrl('/Refresh', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/changePass']);
+        });
+      }
+      
     }, err => {
       console.log(err.error);
     });

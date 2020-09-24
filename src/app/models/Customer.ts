@@ -1,11 +1,10 @@
 export class Customer
 {
-    username:string;
+    userId:number;
      password:string; 
      securityQuestion:string;
      answer:string; 
      customerName:string; 
-     contact:string;
      dateOfBirth:string; 
-     
+    customerContact:string; 
 }

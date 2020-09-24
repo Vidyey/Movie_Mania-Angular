@@ -12,8 +12,9 @@ import { MovieService } from 'src/app/Services/movie.service';
 export class TheaterComponent implements OnInit {
   addtheaterForm: FormGroup;
   submitted: boolean = false;
-  list:Theater;
-theaterlist:string;
+ // list:Theater;
+//theaterlist:string;
+theater:Theater[];
   constructor(private builder1:FormBuilder,private router:Router,private movieser:MovieService) { }
 
   ngOnInit() {
@@ -27,10 +28,12 @@ theaterlist:string;
          Validators.maxLength(5),
       ]),
 
+      
 
       theaterName: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-zA-Z]+")
+        // Validators.pattern("[a-zA-Z]+")
+        Validators.pattern( "[a-zA-Z0-9]+[a-zA-Z0-9 ]+")
       ]),
 
       theaterCity: new FormControl('', [
@@ -40,7 +43,8 @@ theaterlist:string;
 
       managerName: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-zA-Z]+")
+        // Validators.pattern("[a-zA-Z]+")
+        Validators.pattern( "[a-zA-Z]+[a-zA-Z ]+")
       ]),
 
       managerContact: new FormControl('', [
@@ -50,14 +54,24 @@ theaterlist:string;
       Validators.maxLength(12),  
 
          Validators.pattern('[7-9][0-9]{9}')
-      ]),
+      ])
 
 
 
 
       
     
-    })
+    }
+    )
+
+this.movieser.getAllTheaters().subscribe(data=>{
+  this.theater=data;
+  console.log(this.theater);
+})
+if (localStorage.role != "admin") {
+  this.router.navigate(['/search']);
+}
+
 
   }
   onsubmit() {
@@ -69,18 +83,35 @@ theaterlist:string;
     }
     this.movieser.addtheater(this.addtheaterForm.value).subscribe(data=>{
       console.log(data);
+      
       alert("theater added successfully");
-      //this.list=data;
-      //this.theaterlist=data;
+      location.reload();
+      
     })
+   
+  
   }
 
-deleteMovie()
+deleteMovie(objj:Theater)
 {
-  this.movieser.deletetheater(this.addtheaterForm.value.theaterId).subscribe(data=>{
-    console.log(data);
-  })
+  let result = confirm("Do you want to delete theater");
+  if(result){
+    this.movieser.deletetheater(objj.theaterId).subscribe(data=>{
+      console.log(data);
+      this.theater=this.theater.filter(u=> u !== objj);
+     
+    },
+    err => {
+      console.log(err.stack);
+    }
 
+    );
+   
+  }
+ 
+  alert("Theater is Deleted..!");
+ 
+  location.reload();
 }
 
 }

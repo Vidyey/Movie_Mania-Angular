@@ -1,0 +1,38 @@
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: left;
+  }
+ 
+  
+
+header {
+    background-color: #666;
+    padding: px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+  }
+
+  footer {
+    background-color: #666;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    
+  }
+  .w3-card {
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.671); */
+    background-color: rgb(102, 102, 102);
+    max-width: 200px;
+    margin: auto;
+    text-align: right;
+    color: chartreuse;
+  }
+
+ 
+
+ 

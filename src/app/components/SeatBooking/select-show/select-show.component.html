@@ -1,0 +1,38 @@
+<div class="col-lg-8 col-md-8">
+    <h2>Step 3 :- Select Show</h2>
+               <table>
+                    <tr *ngFor="let show of theatreShow | reverse , let i = index">
+                       <td>
+                        <div class="container">
+                            <img src="assets/images/Movie2.jpg" alt="Delhi" style="width:100%">
+                            <h3>ShowId :- {{show.showId}}</h3>
+                             <h2>ScreenId :- {{show.screenId}}
+                                Show Name :- {{show.showName}}
+                                Show Start Time :- {{show.showStartTime}}
+                                Show End Time :- {{show.showEndTime}}</h2>   
+                       
+                            <span class="time-right"><button class="btn-outline-danger" (click)="SelectShow(i)"  routerLink="/selectseat">Select</button></span>
+                        </div>
+                       </td>
+                   </tr>
+                   <tr>
+                    <td>
+                     <div class="container">
+                         <img src="assets/images/Movie2.jpg" alt="Delhi" style="width:100%">
+                         <p>Hello. How are you today seat ?</p>
+                         <span class="time-right"><button class="btn-outline-danger" routerLink="/selectseat" >Select</button></span>
+                     </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                     <div class="container">
+                         <img src="assets/images/Movie2.jpg" alt="Delhi" style="width:100%">
+                         <p>Hello. How are you today?</p>
+                         <span class="time-right"><button class="btn-outline-danger">Select</button></span>
+                     </div>
+                    </td>
+                </tr>
+               </table> 
+ 
+</div>
