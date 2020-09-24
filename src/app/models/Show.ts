@@ -1,3 +1,5 @@
+import { Seat } from './Seat';
+
 export class Show
 {
     showId:number;
@@ -7,4 +9,5 @@ export class Show
     // movieName:string;
      screenId:number;
      theaterId:number;
+    SeatList: Seat[];  // do check type
 }

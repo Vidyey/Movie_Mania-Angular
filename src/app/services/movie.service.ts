@@ -1,24 +1,57 @@
 import { Injectable } from '@angular/core';
+
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import {Admin} from '../models/Admin';
-import { HttpClient } from '@angular/common/http';
+
+
 import { Movie } from '../models/Movie';
 import { Theater } from '../models/Theater';
 import { Screenn } from '../models/Screenn';
 import { Show } from '../models/Show';
 import { Customer } from '../models/Customer';
 import { Ticket } from '../models/Ticket';
+import { Seat } from '../models/Seat';
+import { Booking } from '../models/Booking';
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-
-  constructor(private http:HttpClient) { }
-
+  
  
+
+  private baseURL = 'http://localhost:1091/movie';
+  private headers = new HttpHeaders ({'Content-Type': 'application/json'});
+  private options = {headers: this.headers};
+  constructor(private http:HttpClient) { }
+//Pratik Module
+
+makepayment(bid: number) {
+  return this.http.get<Booking>(this.baseURL +`/makePayment/${bid}`);
+}
+getTheaterbyMovieId(movieId:number) {
+  return this.http.get<Theater[]>(this.baseURL +`/getTheater/${movieId}`);
+}
+
+getShowbyId( id : number) {
+  return this.http.get<Show>(this.baseURL +`/getShowbyId/${id}`);
+}
+
+selectSeatbyid(seatId: number) {
+  return this.http.get<Seat>( this.baseURL +`/selectSeat/${seatId}`);
+}
+
+getchoosePaymentMethod(sid: any, loc: any[], cust: number) {
+
+  return this.http.put<Booking>( this.baseURL +`/choosePaymentmethod/${sid}/${cust}`,loc);
+  
+}
+// Prajakta's Module 
 public addmovie(movie:Movie)
 {
   console.log(movie);
-  return this.http.post("http://localhost:1091/movie/addMovie",movie,{responseType:'text'});
+  return this.http.post( this.baseURL +"/addMovie",movie,{responseType:'text'});
 }
 
 public addShow(show:Show,screen_id:number)
@@ -29,30 +62,30 @@ return this.http.post(`http://localhost:1091/movie/addShow/${screen_id}`,show,{r
 
 public getallMovies()
 {
-  return this.http.get<Movie[]>("http://localhost:1091/movie/getMovies");
+  return this.http.get<Movie[]>(this.baseURL +"/getMovies");
 }
 
 
 public getAllShows()
 {
-return this.http.get<Show[]>("http://localhost:1091/movie/getShow");
+return this.http.get<Show[]>(this.baseURL +"/getShow");
 }
 
 
 public addtheater(theater:Theater)
 {
   console.log(theater);
-  return this.http.post("http://localhost:1091/movie/addTheater",theater,{responseType:'text'});
+  return this.http.post( this.baseURL + "/addTheater",theater,{responseType:'text'});
 }
 
 public deletetheater(theaterId:number)
 {
-  return this.http.delete(`http://localhost:1091/movie/deleteTheater/${theaterId}`);
+  return this.http.delete(this.baseURL +`/deleteTheater/${theaterId}`);
 }
 
 public getAllTheaters()
 {
-  return this.http.get<Theater[]>("http://localhost:1091/movie/getTheater");
+  return this.http.get<Theater[]>( this.baseURL +"/getTheater");
 }
 
 
@@ -68,45 +101,45 @@ return this.http.get(`http://localhost:1091/movie/getScreenById/${screenId}`)
 
 public getAllScreens()
 {
-  return this.http.get<Screenn[]>("http://localhost:1091/movie/getScreen");
+  return this.http.get<Screenn[]>( this.baseURL +"/getScreen");
 }
 public addScreen(screen:Screenn,theaterId:number)
 {
-  return this.http.post(`http://localhost:1091/movie/addScreen/${theaterId}`,screen,{responseType:'text'});
+  return this.http.post( this.baseURL + `/addScreen/${theaterId}`,screen,{responseType:'text'});
 }
 
 public deleteScreen(screenId:number)
 {
-  return this.http.delete(`http://localhost:1091/movie/deleteScreen/${screenId}`,{responseType:'text'});
+  return this.http.delete( this.baseURL + `/deleteScreen/${screenId}`,{responseType:'text'});
 } 
 
 public deleteShow(showId:number)
 {
-  return this.http.delete(`http://localhost:1091/movie/deleteShow/${showId}`,{responseType:'text'});
+  return this.http.delete(this.baseURL + `/deleteShow/${showId}`,{responseType:'text'});
 }
 registerNewUser(customer: Customer) {
-  return this.http.post("http://localhost:8080/movie/regCust", customer,  { responseType: 'text' as 'json' });
+  return this.http.post( this.baseURL + "/regCust", customer,  { responseType: 'text' as 'json' });
 }
 
 registerNewAdmin(admin: Admin) {
-  return this.http.post("http://localhost:8080/movie/regAdmin", admin,  { responseType: 'text' as 'json' });
+  return this.http.post( this.baseURL + "/regAdmin", admin,  { responseType: 'text' as 'json' });
 }
 
 
 login(username, password) {
-  return this.http.get<boolean>("http://localhost:8080/movie/custLogin/" + username + "/" + password);
+  return this.http.get<boolean>( this.baseURL + "/custLogin/" + username + "/" + password);
 }
 
 loginAdmin(username, password) {
-  return this.http.get<boolean>("http://localhost:8080/movie/adminLogin/" + username + "/" + password);
+  return this.http.get<boolean>( this.baseURL + "/adminLogin/" + username + "/" + password);
 }
 
 changePassword(username, currentPass, newPass) {
-  return this.http.get("http://localhost:8080/movie/changePassword/"+username + "/" + currentPass + "/" + newPass, { responseType: 'text' as 'json' });
+  return this.http.get( this.baseURL + "/changePassword/"+username + "/" + currentPass + "/" + newPass, { responseType: 'text' as 'json' });
 }
 
 changePasswordAdmin(username, currentPass, newPass) {
-  return this.http.get("http://localhost:8080/movie/changePasswordAdmin/"+username + "/" + currentPass + "/" + newPass, { responseType: 'text' as 'json' });
+  return this.http.get( this.baseURL + "/changePasswordAdmin/"+username + "/" + currentPass + "/" + newPass, { responseType: 'text' as 'json' });
 }
 
 forgotPassword(uname,securityQue,securityAns) {
@@ -115,7 +148,7 @@ forgotPassword(uname,securityQue,securityAns) {
      "securityQuestion":securityQue,
      "securityAnswer":securityAns
    }
-   return this.http.post<String>("http://localhost:8080/movie/forgotPassword",forgotPassRequest, { responseType: 'text' as 'json' });
+   return this.http.post<String>( this.baseURL + "/forgotPassword",forgotPassRequest, { responseType: 'text' as 'json' });
  }
 
  forgotPasswordAdmin(uname,securityQue,securityAns) {
@@ -124,36 +157,36 @@ forgotPassword(uname,securityQue,securityAns) {
      "securityQuestion":securityQue,
      "securityAnswer":securityAns
    }
-   return this.http.post<String>("http://localhost:8080/movie/forgotPasswordAdmin",forgotPassRequest, { responseType: 'text' as 'json' });
+   return this.http.post<String>( this.baseURL + "/forgotPasswordAdmin",forgotPassRequest, { responseType: 'text' as 'json' });
  }
 
 
  public getcustomerdetails(username) 
 {
  
-  return this.http.get<Customer>("http://localhost:8080/movie/getCust/"+username);
+  return this.http.get<Customer>( this.baseURL + "/getCust/"+username);
 }
 
 public getAdmindetails(username) 
 {
  
-  return this.http.get<Admin>("http://localhost:8080/movie/getAdmin/"+username);
+  return this.http.get<Admin>( this.baseURL + "/getAdmin/"+username);
 }
 
 public editUser(cust:Customer)
 {
  
- return this.http.put("http://localhost:8080/movie/editCust",cust,{responseType:'text'})
+ return this.http.put( this.baseURL + "/editCust",cust,{responseType:'text'})
 }
 
 public editAdmin(admin:Admin)
 {
  
- return this.http.put("http://localhost:8080/movie/editAdmin",admin,{responseType:'text'})
+ return this.http.put( this.baseURL + "/editAdmin",admin,{responseType:'text'})
 }
 
 public getBookings(username){
-      return this.http.get<Ticket[]>("http://localhost:8080/movie/myTickets/"+username);
+      return this.http.get<Ticket[]>( this.baseURL + "/myTickets/"+username);
 }
 
 }

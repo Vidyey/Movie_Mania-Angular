@@ -1,0 +1,36 @@
+<div class="col-lg-8 col-md-8">
+    <h2>Step 3 :- Select Theatre</h2>
+               <table>
+                <tr *ngFor="let user of theater | reverse , let i = index">
+                       <td>
+                        <div class="container">
+                            <img src="assets/images/Movie2.jpg" alt="Delhi" style="width:100%">
+                            {{user.theaterName}}
+                            <h2>{{user.theaterCity}}</h2>
+                            <h2>Contact:- {{user.managerName}}</h2>
+                            <h2>Phone No:- {{user.managerContact}} </h2>
+                            <span class="time-right"><button class="btn-outline-danger" (click)="selectTheatre(i)" routerLink="/selectshow">Select</button></span>
+                        </div>
+                       </td>
+                   </tr>
+                   <tr>
+                    <td>
+                     <div class="container">
+                         <img src="assets/images/Movie2.jpg" alt="Delhi" style="width:100%">
+                         <p>Hello. How are you today?</p>
+                         <span class="time-right"><button class="btn-outline-danger" routerLink="/selectshow" >Select</button></span>
+                     </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                     <div class="container">
+                         <img src="assets/images/Movie2.jpg" alt="Delhi" style="width:100%">
+                         <p>Hello. How are you today?</p>
+                         <span class="time-right"><button class="btn-outline-danger">Select</button></span>
+                     </div>
+                    </td>
+                </tr>
+               </table> 
+ 
+</div>

@@ -7,6 +7,7 @@ export class Seat{
       seatPrice:number;
        booking:Booking;
        show:Show ;
+       seatStatus:string;
      
        seatLocation:Array<number>;
 

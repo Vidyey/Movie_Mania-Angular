@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,7 @@ export class AppComponent {
   isCustomer: boolean = false;
   todaysDate = new Date();
 
-  constructor() {  setInterval(() => {
+  constructor(private router : Router) {  setInterval(() => {
     this.todaysDate = new Date();
   }, 1000);
 }
@@ -24,6 +26,13 @@ export class AppComponent {
     this.isCustomer=true;
     else
     this.isGuest=true;
+  }
+
+  logout(){
+    localStorage.removeItem("role");
+    localStorage.removeItem("username");
+    location.reload();
+    this.router.navigate(['']);
   }
   
 }

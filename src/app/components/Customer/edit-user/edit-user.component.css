@@ -32,3 +32,15 @@
 .saveButton:hover {
     background-color: green;
 }
+
+.cancelButton {
+    width: 180px;
+    border-radius: 25px;
+    background-color: rgb(241, 67, 67);
+    outline: none;
+    /* margin-left: 20%; */
+}
+
+.cancelButton:hover {
+    background-color: red;
+}

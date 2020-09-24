@@ -10,6 +10,7 @@ export class SearchMovieComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

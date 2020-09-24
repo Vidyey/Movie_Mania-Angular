@@ -16,7 +16,5 @@ export class Admin{
     answer:string;
     adminName:string;
     adminContact:string;
-    
-
-    
+ 
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@a
 import { Router } from '@angular/router';
 import { Admin } from 'src/app/models/Admin';
 import { MovieService } from 'src/app/Services/movie.service';
+import { AddUserPasswordValidator } from '../../shared/password.validator';
 
 @Component({
   selector: 'app-register',
@@ -50,7 +51,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword:['',Validators.required],
       securityQuestion:['',Validators.required],
       answer:['',Validators.required]
-    })
+    },{validators:AddUserPasswordValidator})
   }
 
 

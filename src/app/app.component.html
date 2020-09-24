@@ -1,5 +1,5 @@
-<nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow" style="background-color: #e76464;">
-  <nav class="navbar-brand col-sm-3 col-md-2 mr-0 text-dark"  style="background-color: #e76464;">
+<nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow" style="background-color: #3e7891;">
+  <nav class="navbar-brand col-sm-3 col-md-2 mr-0 "  style="background-color: #3e7891;">
     <div *ngIf="isAdmin">
       <i class="fas fa-user"></i> &nbsp;Admin
   </div>
@@ -12,25 +12,25 @@
 </div>
 
 </nav>
-<h1 style="margin-right: 100px;font-size: 40px;font-style: italic;"><img src="assets/images/logo.png" style="width: 8%; height:8%;margin: 5px;">Movie Mania</h1>
+<h1 class="text-light" style="margin-right: 100px;font-size: 40px;font-style: italic;"><img src="assets/images/logo.png" style="width: 8%; height:8%;margin: 5px;">Movie Mania</h1>
 </nav>
 
 <div class="container-fluid" >
-  <div class="row">
+  <div class="row text">
       <nav class="col-md-2 col-sm-3 bg-light sidebar" >
-          <div class="sidebar-sticky" style="margin-top: 30px;background-color: aquamarine;">
+          <div class="sidebar-sticky" style="margin-top: 30px;background-color: rgb(101, 131, 131);">
               <ul class="nav flex-column">
                 <div *ngIf="isGuest">
                   <h2 style="margin-left: 15px;">Hi Guest,</h2>
                   <li class="nav-item main">
     
-                      <a class="nav-link" routerLink="/user/login">
+                      <a class="nav-link" routerLink="/login">
                           <img src="https://img.icons8.com/ios-filled/50/000000/login-rounded-down.png" style="height: 30px;"/>   &nbsp;Login <span class="sr-only">(current)</span>
                       </a>
                   </li>
 
                   <li class="nav-item main">
-                      <a class="nav-link" routerLink="/user/addUser">
+                      <a class="nav-link" routerLink="/register">
                           <img src="https://img.icons8.com/ios-filled/50/000000/add-user-male.png" style="height: 30px;"/>  &nbsp;Register
                       </a>
                   </li>
@@ -40,26 +40,38 @@
                   <h2 style="margin-left: 20px;">Hi User,</h2>
                   <li class="nav-item main">
                     
-                    <a class="nav-link" routerLink="/user/login">
+                    <a class="nav-link" routerLink="/editUser">
                       <i class="fas fa-edit"></i>     &nbsp;Edit Profile <span class="sr-only">(current)</span>
                     </a>
                 </li>
 
                 <li class="nav-item main">
-                    <a class="nav-link" routerLink="/user/addUser">
+                    <a class="nav-link" routerLink="/bookings">
                       <i class="fas fa-book"></i>  &nbsp;Your Bookings
                     </a>
                 </li>
+
+                <li class="nav-item main">
+                        <a class="nav-link" (click)="logout()">
+                            <img src="https://img.icons8.com/ios-filled/50/000000/export.png" height="20px"/>  &nbsp; Logout
+                        </a>
+                    </li>
                   
               </div>
               <div *ngIf="isAdmin">
                 <h2 style="margin-left: 20px;">Hi Admin,</h2>
                 <li class="nav-item main">
                   
-                  <a class="nav-link" routerLink="/user/login">
+                  <a class="nav-link" routerLink="/editUser">
                     <i class="fas fa-edit"></i>   &nbsp;Edit Profile <span class="sr-only">(current)</span>
                   </a>
               </li>
+
+              <li class="nav-item main">
+                <a class="nav-link" (click)="logout()">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/export.png" height="20px"/>  &nbsp; Logout
+                </a>
+            </li>
                 
             </div>
 

@@ -28,6 +28,7 @@ theater:Theater[];
          Validators.maxLength(5),
       ]),
 
+      
 
       theaterName: new FormControl('', [
         Validators.required,
@@ -67,6 +68,9 @@ this.movieser.getAllTheaters().subscribe(data=>{
   this.theater=data;
   console.log(this.theater);
 })
+if (localStorage.role != "admin") {
+  this.router.navigate(['/search']);
+}
 
 
   }
