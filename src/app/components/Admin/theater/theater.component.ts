@@ -109,5 +109,4 @@ deleteMovie(objj:Theater)
  
   location.reload();
 }
-
 }

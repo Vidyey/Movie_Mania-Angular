@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 import { Screenn } from 'src/app/models/Screenn';
+import { Theater } from 'src/app/models/Theater';
 import { MovieService } from 'src/app/Services/movie.service';
 
 @Component({
@@ -13,11 +14,18 @@ export class ScreenComponent implements OnInit {
   addscreenForm: FormGroup;
   submitted: boolean = false;
   screen:Screenn[];
+  theater:Theater[];
+  tid:string;
 
-  constructor(private builder2:FormBuilder,private router:Router,private ser:MovieService) { }
+  constructor(private builder2:FormBuilder,private router:Router,private route:ActivatedRoute, private ser:MovieService) { }
 
   ngOnInit() {
 
+    localStorage.removeItem("tid");
+
+    this.tid=this.route.snapshot.paramMap.get("id");
+    localStorage.setItem("tid",this.tid);
+    console.log(this.tid);
     this.addscreenForm = this.builder2.group({
       //username:['',Validators.required,Validators.pattern('^[a-z0-9_-]{3,15}$')],
 
@@ -60,9 +68,19 @@ export class ScreenComponent implements OnInit {
       ]),
     
     })
-    this.ser.getAllScreens().subscribe(data=>{
-      this.screen=data;
-      console.log(this.screen);
+    // this.ser.getAllTheaters().subscribe(data=>{
+    //   this.screen=data;
+    //   console.log(this.theater);
+    // })
+
+    // this.ser.getAllTheaters().subscribe(data=>{
+    //     this.theater=data;
+    //     console.log(data.)
+    // })
+
+    this.ser.getTheaterById(Number(this.tid)).subscribe(data=>{
+      this.screen = data["listOfScreens"]; 
+      console.log(data["listOfScreens"]);
     })
   }
 
@@ -85,7 +103,16 @@ export class ScreenComponent implements OnInit {
    
     
   }
+// getAll()
+// {
+//   this.ser.getAllScreens().subscribe(data=>{
+  
+//     this.screen=this.tid.filter();
 
+//     console.log(this.screen);
+//   })
+
+// }
   deleteScreen(objjj:Screenn)
 {
   let result = confirm("Do you want to delete screen");

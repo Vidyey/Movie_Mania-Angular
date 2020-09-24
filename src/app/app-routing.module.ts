@@ -18,8 +18,9 @@ const routes: Routes = [
   {path:'search',component:SearchMovieComponent},
   {path:'movielist',component:MovielistComponent},
   {path:'theater',component:TheaterComponent},
-  {path:'screen',component:ScreenComponent},
-  {path:'show',component:ShowComponent},
+  {path:'screen/:id',component:ScreenComponent},
+  
+  {path:'show/:id',component:ShowComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'editUser',component:EditUserComponent},

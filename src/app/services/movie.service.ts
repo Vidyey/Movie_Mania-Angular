@@ -21,9 +21,9 @@ public addmovie(movie:Movie)
   return this.http.post("http://localhost:1091/movie/addMovie",movie,{responseType:'text'});
 }
 
-public addShow(show:Show)
+public addShow(show:Show,screen_id:number)
 {
-return this.http.post("http://localhost:1091/movie/addShow",show,{responseType:'text'});
+return this.http.post(`http://localhost:1091/movie/addShow/${screen_id}`,show,{responseType:'text'});
 
 }
 
@@ -54,6 +54,17 @@ public getAllTheaters()
 {
   return this.http.get<Theater[]>("http://localhost:1091/movie/getTheater");
 }
+
+
+public getTheaterById(theaterId:number)
+{
+  return this.http.get(`http://localhost:1091/movie/getTheaterById/${theaterId}`)
+}
+public getScreenById(screenId:number)
+{
+return this.http.get(`http://localhost:1091/movie/getScreenById/${screenId}`)
+}
+
 
 public getAllScreens()
 {

@@ -28,7 +28,8 @@
         <br />
         <!-- <button class="btn btn-outline-success" routerLink="/addmovie">Add Movie</button>
         &nbsp;&nbsp;-->
-        <button class="btn btn-outline-danger" routerLink="/screen">Previous</button> 
+        <button class="btn btn-outline-danger" [routerLink]="['/screen',tid]">Previous</button> 
+        
         &nbsp;&nbsp;
         <br />
         <br />
@@ -125,9 +126,9 @@
                                     <div *ngIf="addscreenForm.get('showId').hasError('pattern')">
                                         <span style="color: red;">showId should not contain letters.</span>
                                     </div>
-                                    <div *ngIf="addscreenForm.get('showId').hasError('max')">
+                                    <!-- <div *ngIf="addscreenForm.get('showId').hasError('max')">
                                         <span style="color: red;">Maximum Length should be 5.</span>
-                                    </div>
+                                    </div> -->
 
 
                                 </div>
@@ -150,9 +151,8 @@
                             <span style="color: red;">Maximum Length should be 5.</span>
                         </div>
 
-
-                    </div>
-                </div>
+                    </div> 
+                </div> 
                  <!--  -->
                   <!--  -->
                 <div class="form-group">
@@ -168,9 +168,9 @@
                         <div *ngIf="addscreenForm.get('screenId').hasError('pattern')">
                             <span style="color: red;">screenId should not contain letters.</span>
                         </div>
-                        <div *ngIf="addscreenForm.get('screenId').hasError('max')">
+                        <!-- <div *ngIf="addscreenForm.get('screenId').hasError('max')">
                             <span style="color: red;">Maximum Length should be 5.</span>
-                        </div>
+                        </div> -->
 
 
                     </div>
@@ -228,21 +228,7 @@
 
                             <!---->
 
-                            <!-- <div class="form-group">
-                                <label class="label">ManagerContact</label>
-                                <input type="text" placeholder="Enter ManagerContact Here.." formControlName="managerContact"
-                                    class="form-control" />
-                                <div *ngIf="addscreenForm.get('managerContact').errors && submitted">
-                                    <div *ngIf="addscreenForm.get('managerContact').hasError('required')">
-                                        <span style="color: red;">Please Enter Contact Number.</span>
-                                    </div>
-        
-                                    <div *ngIf="addscreenForm.get('managerContact').hasError('pattern')">
-                                        <span style="color: red;">please enter 10 digits phone no and not containing
-                                            characters.</span>
-                                    </div>
-                                </div>
-                            </div> -->
+                           
 
                            
 

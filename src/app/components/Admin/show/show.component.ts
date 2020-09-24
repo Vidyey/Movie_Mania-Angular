@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Show } from 'src/app/models/Show';
 import { MovieService } from 'src/app/Services/movie.service';
 
@@ -13,22 +13,32 @@ export class ShowComponent implements OnInit {
   addscreenForm: FormGroup;
   submitted: boolean = false;
 show:Show[];
-  constructor(private builder2:FormBuilder,private router:Router,private movieser:MovieService) { }
+screen:Screen[];
+screenid:string;
+tid:string;
+id:number;
+  constructor(private builder2:FormBuilder,private router:Router,private route:ActivatedRoute,private movieser:MovieService) { }
 
   ngOnInit() {
+    this.id = localStorage.tid;
+    this.tid = localStorage.getItem("tid");
+    this.screenid=this.route.snapshot.paramMap.get("id");
+    console.log(this.screenid);
+
+
     this.addscreenForm = this.builder2.group({
       //username:['',Validators.required,Validators.pattern('^[a-z0-9_-]{3,15}$')],
 
       showId: new FormControl('', [
         Validators.required,
          Validators.pattern("[0-9]+"),
-         Validators.maxLength(5),
+        //  Validators.maxLength(5),
       ]),
 
       screenId: new FormControl('', [
         Validators.required,
          Validators.pattern("[0-9]+"),
-         Validators.maxLength(5),
+        //  Validators.maxLength(5),
       ]),
 
       showStartTime: new FormControl('', [
@@ -41,7 +51,7 @@ show:Show[];
         
       ]),
 
-      theaterId: new FormControl('', [
+      theaterId: new FormControl(this.id, [
         Validators.required,
          Validators.pattern("[0-9]+"),
          Validators.maxLength(5),
@@ -67,9 +77,14 @@ show:Show[];
 //   console.log(this.theater);
 // })
 
-this.movieser.getAllShows().subscribe(data=>{
-  this.show=data;
-  console.log(this.show);
+// this.movieser.getAllShows().subscribe(data=>{
+//   this.show=data;
+//   console.log(this.show);
+// })
+
+this.movieser.getScreenById(Number(this.screenid)).subscribe(data=>{
+  this.show=data["showList"];
+  console.log(data["showList"]);
 })
   }
 
@@ -80,14 +95,13 @@ this.movieser.getAllShows().subscribe(data=>{
     {
       return;
     }
-    this.movieser.addShow(this.addscreenForm.value).subscribe(data=>{
+    this.movieser.addShow(this.addscreenForm.value,this.addscreenForm.value.screenId).subscribe(data=>{
       console.log(data);
       
       alert("show added successfully");
       location.reload();
       
     })
-   
   
   }
 

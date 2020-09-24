@@ -39,10 +39,10 @@
                 <thead>
                     <tr>
                         <!-- <th class="text-hide">Id</th> -->
-                        <th>Show Id</th>
+                        <th>Screen Id</th>
                         <!-- <th>Theater Id</th> -->
-                        <th>Show Name</th>
-                        <th>showStartTime</th>
+                        <th>Screen Name</th>
+                        <th>MovieEndDate</th>
                         <th>Rows</th>
                         <th>Columns</th>
                         
@@ -75,7 +75,8 @@
                         <td>{{user.rows}}</td>
                         <td>{{user.columns}}</td>
                         <td>
-                            <button class="btn-outline-danger" routerLink="/show">Select</button>&nbsp;&nbsp;
+                            <button class="btn-outline-danger" [routerLink]="['/show',user.screenId]">Select</button>&nbsp;&nbsp;
+                            
                             <button class="btn-outline-warning" style="margin-top: 10px;" (click)="deleteScreen(user)">Delete</button>
                         </td>
                     </tr>
