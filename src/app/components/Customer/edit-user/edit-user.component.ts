@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { fstat } from 'fs';
+
 import { MovieService } from 'src/app/Services/movie.service';
 
 @Component({
@@ -18,7 +18,9 @@ export class EditUserComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router,private service:MovieService) { }
 
   ngOnInit() {
-    
+    if (localStorage.username == null) {
+      this.router.navigate(['/search']);
+    }
     if(localStorage.role=="customer"){
 
       this.isCustomer=true;
@@ -46,7 +48,7 @@ export class EditUserComponent implements OnInit {
       
       
     });
-  }else{
+  }else if(localStorage.role=="admin"){
     this.isAdmin=true;
 
     this.editProfileForm = this.formBuilder.group({

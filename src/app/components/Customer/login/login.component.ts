@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
+   
     
     this.loginForm = this.formBuilder.group({
 
@@ -30,6 +31,10 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
       role:['',Validators.required],
     })
+    if(localStorage.role == "admin")
+    this.router.navigate(['']);
+    else if(localStorage.role == "customer")
+    this.router.navigate(['/search']);
     
 
   }
@@ -48,7 +53,7 @@ export class LoginComponent implements OnInit {
           if (data) {
             localStorage.username = username;
             localStorage.role = "customer";
-            this.router.navigate([''])
+            location.reload();
           }
           else {
             this.invalidLogin = true;
@@ -63,7 +68,6 @@ export class LoginComponent implements OnInit {
       if (data) {
         localStorage.username = username;
         localStorage.role = "admin";
-        this.router.navigate([''])
       }
       else {
         this.invalidLogin = true;

@@ -19,11 +19,18 @@ export class ChangePasswordComponent implements OnInit {
      private router: Router, private service: MovieService,private location : Location) { }
 
   ngOnInit() {
+
+
     this.changePasswordForm = this.formBuilder.group({
       oldPassword:['',Validators.required],
       newPassword: ['', [Validators.required,Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}")]],
       confirmPassword: ['', Validators.required]
     });
+    if (localStorage.username == null) {
+      this.router.navigate(['/search']);
+    }
+    
+  
   }
 
 

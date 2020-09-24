@@ -1,11 +1,21 @@
-
 <div class="row offset-lg-1 offset-md-1 col-lg-11 col-md-11" style="margin-top: 50px;">
-<div class="card text-center" *ngFor="let ticket of tickets" style="width: 300px; height: 400px;border-color: black;margin: 2px;">
+    <h2>Your Bookings</h2>
+    <hr>
+</div>
+<div class="row offset-lg-1 offset-md-1 col-lg-11 col-md-11"style="margin-top: 10px;" >
+    
+<div class="card text-center" *ngFor="let ticket of tickets" style="width: 230px; height: 350px;border-color: black;margin: 2px;">
     
     <div class="card-body">
-        <h4 class="card-title"> {{ticket.screenName}}</h4>
-        <p class="card-text">{{ ticket.noOfSeats}}</p>
-        <p class="card-text">{{ ticket.seatName}}</p>
+        <p class="card-title">Movie : Thor Ragnarok</p>
+        <p class="card-title">Show Date : 12-09-2018</p>
+        <p class="card-title">Show Time : 12:00</p>
+        <h4 class="card-title">Seats : {{ ticket.seatName}}</h4>
+        <p class="card-text">No. of Seats : {{ ticket.noOfSeats}}</p>
+        <p class="card-text">Screen Name : {{ticket.screenName}}</p>
+        <h4 *ngIf="ticket.ticketStatus" class="card-title text-success">Booked</h4>
+        <a *ngIf="ticket.ticketStatus" routerLink="" class="btn btn-outline-danger">Cancel</a>
+        <h4 *ngIf="!ticket.ticketStatus" class="card-title text-danger">Cancelled</h4>
        
     </div>
 </div>

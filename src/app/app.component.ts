@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { lchmod } from 'fs';
+
 
 @Component({
   selector: 'app-root',
@@ -31,7 +31,7 @@ export class AppComponent {
   logout(){
     localStorage.removeItem("role");
     localStorage.removeItem("username");
-    
+    location.reload();
     this.router.navigate(['']);
   }
   
